@@ -60,13 +60,13 @@ cronAdd@<|
                ,
                     Print["😢 lost"];
 
-                    JTPClientStopListening[swarm];
+                    JTPClientStop[swarm];
                     logWrite["⏳ Trying to recover in 15 sec..."];
 
                     cronAdd@<|
                         "period" -> Quantity[15,"Seconds"],
                         "onetime" -> True,
-                        "action":>With[{}, RegMe;]
+                        "action":>With[{}, swarm = (JTPClient @@ (URLFetch["http://swarm.polesite.ru/ip.wsp"] // Uncompress)) // JTPClientStart; RegMe;]
                     |>;
 
                ];
