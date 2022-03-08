@@ -1,2 +1,2 @@
 # bee-mathematica
-a single unit
+a single unit.
