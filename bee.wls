@@ -31,9 +31,8 @@ RegMe:=With[{$KernelName = $KernelName, $KernelInfo=$KernelInfo},
         ];
 
 cronAdd@<|
-
-    "period" -> Quantity[1,"Minutes"],
-    "action":>(Print/@(swarm["log"]["Elements"]))
+    "period" -> Quantity[3,"Minutes"],
+    "action":>While[!swarm["log"]["EmptyQ"],(swarm["log"]["Pop"] >>> "server.log")]
 |>;
 
 cronAdd@<|
@@ -48,7 +47,7 @@ cronAdd@<|
 |>;
 
 cronAdd@<|
-    "period" -> Quantity[20,"Seconds"],
+    "period" -> Quantity[30,"Seconds"],
     "action":>With[{},
                If[$connected,
                     (*SendAsync[AliveQ, $cli//First, Promise -> Function[{message,soc},
