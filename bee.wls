@@ -31,7 +31,7 @@ RegMe:=With[{$KernelName = $KernelName, $KernelInfo=$KernelInfo},
         ];
 
 cronAdd@<|
-    "period" -> Quantity[3,"Minutes"],
+    "period" -> Quantity[5,"Seconds"],
     "action":>While[!swarm["log"]["EmptyQ"],(swarm["log"]["Pop"] >>> "server.log")]
 |>;
 
