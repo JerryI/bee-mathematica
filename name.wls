@@ -26,7 +26,7 @@ nameGenerator[entOrString_List, extractor_ : "SegmentedWords"] :=
      names = StringTrim /@ DeleteMissing[entOrString];
      SequencePredict[names, FeatureExtractor -> extractor]]]];
 bandSP = nameGenerator[
-   EntityClass["MusicAct", "Country" -> Entity["Country", "Russia"]] //
+   EntityClass["MusicAct", "Country" -> Entity["Country", "Germany"]] //
      EntityList];
 
 $KernelName = predictionList[bandSP, 1, 2, 6]//First;
