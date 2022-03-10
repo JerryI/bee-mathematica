@@ -30,3 +30,4 @@ bandSP = nameGenerator[
      EntityList];
 
 $KernelName = predictionList[bandSP, 1, 2, 6]//First;
+$KernelInfo = $System;
