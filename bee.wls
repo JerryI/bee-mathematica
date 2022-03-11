@@ -12,7 +12,7 @@ Ja:=With[{}, $connected = True];
 
 $connected = False; 
 
-RegMe:=With[{$KernelName = $KernelName, $KernelInfo=$KernelInfo},
+RegMe:=With[{$KernelName = predictionList[bandSP, 1, 2, 6]//First, $KernelInfo = <|"system"->$System, "geo"->GeoNearest["City", Here], "machine"->$MachineName|>},
             
             logWrite["✏ Trying to register"];
             
@@ -30,20 +30,11 @@ RegMe:=With[{$KernelName = $KernelName, $KernelInfo=$KernelInfo},
                 
         ];
 
-cronAdd@<|
-    "period" -> Quantity[5,"Seconds"],
-    "action":>While[!swarm["log"]["EmptyQ"],(swarm["log"]["Pop"] >>> "server.log")]
-|>;
 
 cronAdd@<|
     "period" -> Quantity[5,"Seconds"],
     "onetime" -> True,
     "action":>RegMe
-|>;
-
-cronAdd@<|
-    "period" -> Quantity[10,"Minutes"],
-    "action":>Print[Now//DateString]
 |>;
 
 cronAdd@<|
@@ -72,4 +63,16 @@ cronAdd@<|
                ];
                 
              ]
+|>;
+
+cronAdd@<|
+    "period" -> Quantity[5,"Seconds"],
+    "action":>While[!swarm["log"]["EmptyQ"],(swarm["log"]["Pop"] >>> "server.log")]
+|>;
+
+
+
+cronAdd@<|
+    "period" -> Quantity[10,"Minutes"],
+    "action":>Print[Now//DateString]
 |>;

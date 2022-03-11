@@ -29,5 +29,4 @@ bandSP = nameGenerator[
    EntityClass["MusicAct", "Country" -> Entity["Country", "Germany"]] //
      EntityList];
 
-$KernelName = predictionList[bandSP, 1, 2, 6]//First;
-$KernelInfo = $System;
+
